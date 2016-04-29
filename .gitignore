@@ -1,0 +1,5 @@
+node_modules
+typings
+server/build
+client/scripts
+.idea

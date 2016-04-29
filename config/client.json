@@ -1,0 +1,10 @@
+{
+    "root": "client",
+    "port": 3000,
+    "src": {
+        "ts": "client/ts/**/*.ts"
+    },
+    "build": {
+        "js": "client/scripts"
+    }
+}

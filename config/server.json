@@ -1,0 +1,11 @@
+{
+    "root": "server",
+    "entrypoint": "server/build/Server.js",
+    "port": 3010,
+    "src": {
+        "ts": "server/ts/**/*.ts"
+    },
+    "build": {
+        "js": "server/build"
+    }
+}

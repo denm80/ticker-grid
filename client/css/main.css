@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: relative;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #99cfe7;
+    width: 900px;
+}
+
+#container table {
+    width: 100%;
+}
+
+#container th, td {
+    padding: 10px;
+}
+
+#container th {
+    background-color: #99cfe7;
+}
+
+@keyframes fadeIn {
+    0% {
+        /*opacity: 0;*/
+        background-color: #99cfe7;
+    }
+
+    100% {
+        background-color: white;
+        /*opacity: 1;*/
+    }
+}
+
+.changed{
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+}
+
+.clear {
+    background-color: white;
+}

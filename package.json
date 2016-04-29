@@ -1,0 +1,35 @@
+{
+  "name": "ticker-grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Denis Mikhailov",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.5",
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-supervisor": "^0.1.2",
+    "gulp-tsd": "^0.1.1",
+    "gulp-typescript": "^2.8.0",
+    "nconf": "^0.8.4",
+    "nodemon": "^1.4.0",
+    "plumber": "^0.4.8",
+    "tsd": "^0.6.5",
+    "typescript": "^1.8.10",
+    "websocket.io": "^0.2.1"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "nodemon": "^1.9.1",
+    "requirejs": "^2.2.0",
+    "tsd": "^0.6.5"
+  }
+}
