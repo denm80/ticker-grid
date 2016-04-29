@@ -14,6 +14,11 @@ git clone https://github.com/denm80/ticker-grid.git
 npm install
 ```
 
+##install gulp
+```
+npm install gulp -g
+```
+
 ## install .d.ts files
 ```
 tsd update --save
