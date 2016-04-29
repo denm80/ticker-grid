@@ -16,6 +16,11 @@ npm install
 
 ##install gulp
 ```
+npm install tsd -g
+```
+
+##install gulp
+```
 npm install gulp -g
 ```
 
