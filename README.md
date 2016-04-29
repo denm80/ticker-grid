@@ -11,6 +11,5 @@ git clone https://github.com/denm80/ticker-grid.git
 
 ## install and start
 ```
-npm install
 npm start
 ```
