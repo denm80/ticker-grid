@@ -1,19 +1,13 @@
 /// <reference path="../../typings/tsd.d.ts"/>
 import path = require('path');
-import nconf  = require('nconf');
 import fs = require('fs');
-var ws = require('websocket.io');
+import ws = require('websocket.io');
+import cong = require('../../config/server')
 
 import {DataProvider} from './DataProvider';
 
-
-nconf.file('server', {file: path.join(__dirname, '../..', 'config/server.json')});
-
 // configuring server
-var configStores:any = nconf.stores,
-    configServer:any = configStores.server.store,
-    ws = require('websocket.io'),
-    server = ws.listen(configServer.port);
+var server = ws.listen(cong.port);
 
 // reading csv
 var snapshot:Buffer = fs.readFileSync(path.join(__dirname, '../data', 'snapshot.csv'));

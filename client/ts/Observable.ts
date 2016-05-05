@@ -1,4 +1,6 @@
 import {IEventHandler} from "./IEventHandler";
+
+// class allows to add, remove event listeners and to fire custom event
 export class Observable {
     private listeners:Map<string, IEventHandler[]> = new Map();
 

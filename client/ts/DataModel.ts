@@ -1,10 +1,13 @@
 import {Row} from "./Row";
 import {Observable} from "./Observable";
 
+// class represents data model and contains rows and headers
+// and fires event after update
 export class DataModel extends Observable{
     private _headers: string[] = [];
     private _rows: Row[] = [];
 
+    // initializtion of rows and headers
     constructor(data: String) {
         super();
         let lines  = data.toString().split('\n');
@@ -18,6 +21,7 @@ export class DataModel extends Observable{
         }
     }
 
+    // updating rows and firing event
     public update(data: String) {
         let lines  = data.toString().split('\n');
         lines.pop();

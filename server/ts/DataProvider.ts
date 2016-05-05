@@ -1,15 +1,23 @@
 import {IDataModel} from "./IDataModel";
 
+// class provides data for front, can work with many websocket clients
+// and requires csv file which has to contain deltas and time intervals for sending data
 export class DataProvider {
-    private store: IDataModel[] = [];
-    private clients: any[] = [];
+
+    // data store
+    private store:IDataModel[] = [];
+    // websocket clients list
+    private clients:any[] = [];
+    // current iteration
     private iteration = 0;
+    // last timeout ID
     private timeoutId = null;
 
-    constructor(deltas: Buffer) {
-        let lines  = deltas.toString().split('\n');
+    // constructor reads csv file and creates internal entities
+    constructor(deltas:Buffer) {
+        let lines = deltas.toString().split('\n');
         let data = '';
-        lines.forEach(function (line: string) {
+        lines.forEach(function (line:string) {
             if (line.indexOf(',') === -1) {
                 let interval = parseInt(line);
                 if (isNaN(interval)) {
@@ -27,7 +35,8 @@ export class DataProvider {
         }.bind(this));
     }
 
-    public registerClient(client: any) {
+    // registration of new websocket client
+    public registerClient(client:any) {
         this.clients.push(client);
         if (this.clients.length === 1) {
             this.timeoutId = setTimeout(this.tick.bind(this), 3000); // first tick
@@ -35,7 +44,8 @@ export class DataProvider {
         }
     }
 
-    public unregisterClient(client: any) {
+    // unregistration of new websocket client
+    public unregisterClient(client:any) {
         let index = this.clients.indexOf(client);
         if (index > -1) {
             this.clients.splice(index, 1);
@@ -47,6 +57,7 @@ export class DataProvider {
         }
     }
 
+    // iteration of sending data
     private tick() {
         let obj = this.store[this.iteration];
 
@@ -60,7 +71,7 @@ export class DataProvider {
         }.bind(this));
 
         deadClients.forEach(function (client) {
-           this.unregisterClient(client);
+            this.unregisterClient(client);
         }.bind(this));
 
         this.timeoutId = setTimeout(this.tick.bind(this), obj.interval);
