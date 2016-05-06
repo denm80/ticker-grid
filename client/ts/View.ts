@@ -1,12 +1,18 @@
 import {DataModel} from "./DataModel";
 import {Row} from "./Row";
 
-// class view receives data model and container (HTML element)
-// class subscribes to event of data model and updates DOM when it needs
+/**
+ * Class represents view and updates DOM when data model is changed
+ */
 export class View {
     private tbody:any;
 
-    // generation of html
+    /**
+     * Generates html, subscribes to event of data model
+     * @constructor
+     * @param {DataModel} model - data model.
+     * @param {Element} container - container for view (HTML element).
+     */
     constructor(private model:DataModel, private container:Element) {
         let table = document.createElement('table');
         table.className = 'b-layout-table';
@@ -42,7 +48,11 @@ export class View {
         this.model.addListener('updated', this.onUpdated.bind(this));
     }
 
-    // updating html
+    /**
+     * Handler for event "updated" of data model.
+     * @private
+     * @param {String} data - line of raw data in csv format.
+     */
     private onUpdated(evt:any) {
         for (let i = 0; i < this.model.rows.length; i++) {
             let row = this.model.rows[i];

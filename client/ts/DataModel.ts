@@ -1,16 +1,22 @@
 import {Row} from "./Row";
 import {Observable} from "./Observable";
 
-// class represents data model and contains rows and headers
-// and fires event after update
-export class DataModel extends Observable{
-    private _headers: string[] = [];
-    private _rows: Row[] = [];
+/**
+ * Class represents data model and contains rows and headers and fires event after update.
+ */
+export class DataModel extends Observable {
+    private _headers:string[] = [];
+    private _rows:Row[] = [];
 
-    // initializtion of rows and headers
-    constructor(data: String) {
+
+    /**
+     * Initialization of rows and headers.
+     * @constructor
+     * @param {String} data - raw data in csv format.
+     */
+    constructor(data:String) {
         super();
-        let lines  = data.toString().split('\n');
+        let lines = data.toString().split('\n');
         lines.pop();
 
         this._headers = lines[0].split(',');
@@ -21,9 +27,13 @@ export class DataModel extends Observable{
         }
     }
 
-    // updating rows and firing event
-    public update(data: String) {
-        let lines  = data.toString().split('\n');
+
+    /**
+     * Updating rows and firing event.
+     * @param {String} data - raw data in csv format.
+     */
+    public update(data:String) {
+        let lines = data.toString().split('\n');
         lines.pop();
         for (let i = 0; i < lines.length; i++) {
             this._rows[i].update(lines[i]);
@@ -31,11 +41,22 @@ export class DataModel extends Observable{
         this.fireEvent('updated', this);
     }
 
-    get rows(): Row[] {
+
+    /**
+     * Returns a data for rows.
+     * @returns {Row[]}
+     */
+    get rows():Row[] {
         return this._rows;
     }
 
-    get headers(): string[] {
+
+
+    /**
+     * Returns a data for headers.
+     * @returns {string[]}
+     */
+    get headers():string[] {
         return this._headers;
     }
 

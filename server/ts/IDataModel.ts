@@ -1,4 +1,6 @@
-// data model for delta
+/**
+ * Interface represents data model for delta
+ */
 export interface IDataModel {
     interval: number;
     data: string

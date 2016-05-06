@@ -1,8 +1,8 @@
 /// <reference path="../../typings/tsd.d.ts"/>
 import path = require('path');
 import fs = require('fs');
-import ws = require('websocket.io');
-import cong = require('../../config/server')
+var cong = require('../../config/server');
+var ws = require('websocket.io');
 
 import {DataProvider} from './DataProvider';
 

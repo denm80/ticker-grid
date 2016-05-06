@@ -1,7 +1,10 @@
 import {IDataModel} from "./IDataModel";
 
-// class provides data for front, can work with many websocket clients
-// and requires csv file which has to contain deltas and time intervals for sending data
+
+/**
+ * Class provides data for front, can work with many websocket clients
+ * and requires csv file which has to contain deltas and time intervals for sending data
+ */
 export class DataProvider {
 
     // data store
@@ -13,7 +16,11 @@ export class DataProvider {
     // last timeout ID
     private timeoutId = null;
 
-    // constructor reads csv file and creates internal entities
+    /**
+     * Reads csv file and creates internal entities.
+     * @constructor
+     * @param {Buffer} deltas - raw data in csv format.
+     */
     constructor(deltas:Buffer) {
         let lines = deltas.toString().split('\n');
         let data = '';
@@ -35,16 +42,22 @@ export class DataProvider {
         }.bind(this));
     }
 
-    // registration of new websocket client
+    /**
+     * Registration of new websocket client
+     * @param {any} client - websocket client
+     */
     public registerClient(client:any) {
         this.clients.push(client);
         if (this.clients.length === 1) {
             this.timeoutId = setTimeout(this.tick.bind(this), 3000); // first tick
-            // this.tick();
         }
     }
 
-    // unregistration of new websocket client
+
+    /**
+     * Unregistration of websocket client
+     * @param {any} client - websocket client
+     */
     public unregisterClient(client:any) {
         let index = this.clients.indexOf(client);
         if (index > -1) {
@@ -57,7 +70,11 @@ export class DataProvider {
         }
     }
 
-    // iteration of sending data
+
+    /**
+     * Iteration of sending data
+     * @private
+     */
     private tick() {
         let obj = this.store[this.iteration];
 
